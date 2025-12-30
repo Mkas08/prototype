@@ -180,10 +180,11 @@ input:focus {
 
 /* Screen 1: Splash */
 #splash-screen {
-    display: flex !important;
+    display: none;
+    /* JS will set to flex when active */
     flex-direction: column;
-    justify-content: center !important;
-    align-items: center !important;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     height: 100%;
     min-height: 100%;
@@ -191,6 +192,10 @@ input:focus {
     /* Placeholder for geometric pattern */
     background-size: cover;
     background-blend-mode: overlay;
+}
+
+#splash-screen.active {
+    display: flex;
 }
 
 .logo-container img {
