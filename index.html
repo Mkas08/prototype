@@ -26,8 +26,8 @@
         <!-- Theme Toggle removed (moved to Settings) -->
 
         <!-- Screen 1: Splash -->
-        <div id="splash-screen" class="screen active">
-            <div class="logo-container">
+        <div id="splash-screen" class="screen active" style="justify-content: center; align-items: center;">
+            <div class="logo-container" style="text-align: center;">
                 <img src="https://placehold.co/100x100/4A7C59/ffffff?text=QF" alt="App Logo" id="splash-logo">
                 <h1>Qur'an<br>Focus</h1>
             </div>
@@ -412,10 +412,22 @@
         <!-- Screen 9: Community Feed -->
         <div id="community-screen" class="screen" style="padding-bottom: 80px;">
             <div class="home-header">
-                <div style="width: 24px;"></div> <!-- Spacer for center alignment -->
+                <i class="fas fa-users" onclick="showScreen('group-details-screen')" style="color: var(--primary); cursor: pointer;" title="Groups"></i>
                 <h2>Community</h2>
                 <i class="fas fa-trophy" style="color: var(--primary); cursor: pointer;"
                     onclick="showScreen('leaderboard-screen')"></i>
+            </div>
+
+            <!-- Quick Actions Row -->
+            <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                <div onclick="showScreen('create-competition-screen')" style="flex: 1; background: var(--surface); padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; box-shadow: var(--shadow);">
+                    <i class="fas fa-flag" style="color: var(--primary); font-size: 1.2rem;"></i>
+                    <p style="margin: 8px 0 0; font-size: 0.85rem; font-weight: 600;">New Competition</p>
+                </div>
+                <div onclick="showScreen('group-details-screen')" style="flex: 1; background: var(--surface); padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; box-shadow: var(--shadow);">
+                    <i class="fas fa-user-friends" style="color: var(--secondary); font-size: 1.2rem;"></i>
+                    <p style="margin: 8px 0 0; font-size: 0.85rem; font-weight: 600;">My Groups</p>
+                </div>
             </div>
 
             <!-- Feed Container -->
@@ -729,8 +741,9 @@
         <!-- Screen 12: Quran Index -->
         <div id="quran-screen" class="screen" style="padding-bottom: 80px;">
             <div class="home-header">
+                <i class="fas fa-pen" onclick="showScreen('manual-log-screen')" style="color: var(--primary); cursor: pointer;" title="Log Reading"></i>
                 <h2>Al-Qur'an</h2>
-                <i class="fas fa-search" style="color: var(--primary);"></i>
+                <i class="fas fa-bookmark" onclick="showScreen('bookmarks-screen')" style="color: var(--primary); cursor: pointer;" title="Bookmarks"></i>
             </div>
 
             <!-- Search Bar -->
@@ -743,7 +756,7 @@
             <div class="toggle-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
                 <button class="btn btn-primary" style="flex: 1; padding: 8px;">Surah</button>
                 <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Juz</button>
-                <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Bookmarks</button>
+                <button class="btn btn-secondary" onclick="showScreen('bookmarks-screen')" style="flex: 1; padding: 8px;">Bookmarks</button>
             </div>
 
             <!-- Surah List -->
@@ -794,7 +807,10 @@
                     <h3 id="full-reader-title" style="margin: 0;">Al-Kahf</h3>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">Page 293</span>
                 </div>
-                <i class="fas fa-ellipsis-v" style="cursor: pointer;"></i>
+                <div style="display: flex; gap: 16px;">
+                    <i class="fas fa-headphones" onclick="showScreen('audio-player-screen')" style="color: var(--primary); cursor: pointer;" title="Audio Player"></i>
+                    <i class="fas fa-ellipsis-v" style="cursor: pointer;"></i>
+                </div>
             </div>
 
             <div style="text-align: center; margin: 20px 0;">
@@ -846,6 +862,225 @@
                         that clearly guides to the true path, containing no ambiguity or deviances.
                     </p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Screen 11: Audio Player (Bottom Sheet Overlay) -->
+        <div id="audio-player-screen" class="screen" style="justify-content: flex-end; background: rgba(0,0,0,0.5);">
+            <div style="background: var(--surface); border-radius: 24px 24px 0 0; padding: 24px;">
+                <div style="width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 20px;"></div>
+                
+                <div class="text-center" style="margin-bottom: 24px;">
+                    <h3 style="margin: 0;">Al-Kahf</h3>
+                    <p style="margin: 4px 0 0; color: var(--text-muted);">Mishary Rashid Alafasy</p>
+                </div>
+
+                <!-- Progress Bar -->
+                <div style="margin-bottom: 20px;">
+                    <div style="background: var(--border); height: 4px; border-radius: 2px; overflow: hidden;">
+                        <div style="background: var(--primary); width: 35%; height: 100%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.8rem; color: var(--text-muted);">
+                        <span>3:24</span>
+                        <span>9:47</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 24px;">
+                    <i class="fas fa-step-backward" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        <i class="fas fa-pause" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    <i class="fas fa-step-forward" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                </div>
+
+                <!-- Extra Controls -->
+                <div style="display: flex; justify-content: space-around; color: var(--text-muted);">
+                    <div style="text-align: center; font-size: 0.8rem;"><i class="fas fa-redo"></i><br>Repeat</div>
+                    <div style="text-align: center; font-size: 0.8rem;"><i class="fas fa-tachometer-alt"></i><br>Speed</div>
+                    <div style="text-align: center; font-size: 0.8rem;"><i class="fas fa-list"></i><br>Queue</div>
+                </div>
+
+                <button class="btn btn-secondary" style="margin-top: 20px;" onclick="showScreen('full-reader-screen')">Close Player</button>
+            </div>
+        </div>
+
+        <!-- Screen 12: Manual Log -->
+        <div id="manual-log-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('quran-screen')" style="cursor: pointer;"></i>
+                <h2>Log Reading</h2>
+                <span style="color: var(--primary); font-weight: 600; cursor: pointer;">Save</span>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Manually log pages you've read offline or from a physical Mushaf.</p>
+
+            <div class="input-group">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Surah</label>
+                <select style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text-color);">
+                    <option>Al-Fatihah</option>
+                    <option>Al-Baqarah</option>
+                    <option selected>Al-Kahf</option>
+                    <option>Yasin</option>
+                    <option>Al-Mulk</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-top: 16px;">
+                <div class="input-group" style="flex: 1;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">From Verse</label>
+                    <input type="number" value="1" style="width: 100%;">
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">To Verse</label>
+                    <input type="number" value="10" style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="input-group" style="margin-top: 16px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Date</label>
+                <input type="date" style="width: 100%;">
+            </div>
+
+            <div class="input-group" style="margin-top: 16px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Notes (Optional)</label>
+                <textarea placeholder="Add any notes..." style="width: 100%; height: 80px; resize: none;"></textarea>
+            </div>
+        </div>
+
+        <!-- Screen 13: Bookmarks -->
+        <div id="bookmarks-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('quran-screen')" style="cursor: pointer;"></i>
+                <h2>Bookmarks</h2>
+                <div style="width: 24px;"></div>
+            </div>
+
+            <div id="bookmarks-list" style="margin-top: 10px;">
+                <!-- Bookmark Item 1 -->
+                <div class="bookmark-item" style="display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--surface); border-radius: 12px; margin-bottom: 12px; box-shadow: var(--shadow);">
+                    <div style="width: 40px; height: 40px; background: rgba(74, 124, 89, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-bookmark" style="color: var(--primary);"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0;">Al-Kahf: Verse 10</h4>
+                        <p style="margin: 4px 0 0; font-size: 0.8rem; color: var(--text-muted);">Saved 2 days ago</p>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-muted);"></i>
+                </div>
+                <!-- Bookmark Item 2 -->
+                <div class="bookmark-item" style="display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--surface); border-radius: 12px; margin-bottom: 12px; box-shadow: var(--shadow);">
+                    <div style="width: 40px; height: 40px; background: rgba(74, 124, 89, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-bookmark" style="color: var(--primary);"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0;">Yasin: Verse 1</h4>
+                        <p style="margin: 4px 0 0; font-size: 0.8rem; color: var(--text-muted);">Saved 1 week ago</p>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-muted);"></i>
+                </div>
+                <!-- Empty State Placeholder -->
+                <div class="text-center" style="margin-top: 40px; color: var(--text-muted);">
+                    <i class="far fa-bookmark" style="font-size: 2rem; margin-bottom: 12px;"></i>
+                    <p>No more bookmarks yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 16: Group Details -->
+        <div id="group-details-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('community-screen')" style="cursor: pointer;"></i>
+                <h2>Group</h2>
+                <i class="fas fa-ellipsis-v" style="cursor: pointer;"></i>
+            </div>
+
+            <div class="text-center" style="margin-bottom: 24px;">
+                <div class="avatar-circle" style="width: 80px; height: 80px; margin: 0 auto 12px; background: var(--secondary);">
+                    <i class="fas fa-users" style="font-size: 2rem;"></i>
+                </div>
+                <h3 style="margin: 0;">Ramadan Prep Group</h3>
+                <p style="margin: 4px 0 0; color: var(--text-muted);">12 Members • Created Jan 2024</p>
+            </div>
+
+            <h4>Members</h4>
+            <div class="members-list" style="margin-top: 12px;">
+                <!-- Member 1 -->
+                <div class="member-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1rem;">O</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0;">Omar</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Admin</span>
+                    </div>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="alert('Nudge sent! 🔔')">Nudge</button>
+                </div>
+                <!-- Member 2 -->
+                <div class="member-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1rem;">Y</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0;">Yusuf</h4>
+                    </div>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="alert('Nudge sent! 🔔')">Nudge</button>
+                </div>
+                <!-- Member 3 -->
+                <div class="member-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1rem; background: #e0e0e0;">S</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0;">Sarah</h4>
+                    </div>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="alert('Nudge sent! 🔔')">Nudge</button>
+                </div>
+            </div>
+
+            <button class="btn btn-text" style="color: #e74c3c; margin-top: 24px;">Leave Group</button>
+        </div>
+
+        <!-- Screen 17: Create Competition -->
+        <div id="create-competition-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-times" onclick="showScreen('community-screen')" style="cursor: pointer;"></i>
+                <h2>New Competition</h2>
+                <span style="color: var(--primary); font-weight: 600; cursor: pointer;">Create</span>
+            </div>
+
+            <div class="input-group">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Competition Name</label>
+                <input type="text" placeholder="e.g., Ramadan Reading Challenge">
+            </div>
+
+            <div class="input-group" style="margin-top: 16px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Goal</label>
+                <select style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text-color);">
+                    <option>Most Pages Read</option>
+                    <option>Longest Streak</option>
+                    <option>Most Focus Minutes</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-top: 16px;">
+                <div class="input-group" style="flex: 1;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Start Date</label>
+                    <input type="date" style="width: 100%;">
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">End Date</label>
+                    <input type="date" style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="input-group" style="margin-top: 16px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Invite Friends</label>
+                <input type="text" placeholder="Search by username...">
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+                <span style="background: rgba(74, 124, 89, 0.1); color: var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem;">
+                    Omar <i class="fas fa-times" style="margin-left: 4px; cursor: pointer;"></i>
+                </span>
+                <span style="background: rgba(74, 124, 89, 0.1); color: var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem;">
+                    Yusuf <i class="fas fa-times" style="margin-left: 4px; cursor: pointer;"></i>
+                </span>
             </div>
         </div>
 

@@ -180,9 +180,13 @@ input:focus {
 
 /* Screen 1: Splash */
 #splash-screen {
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
     text-align: center;
+    height: 100%;
+    min-height: 100%;
     background-image: url('https://placehold.co/480x800/FAFAF8/4A7C59?text=Geometric+Pattern');
     /* Placeholder for geometric pattern */
     background-size: cover;
@@ -855,7 +859,7 @@ input[type=range]::-webkit-slider-runnable-track {
     }
 }
 
-.screen.active {
+.screen.active:not(#splash-screen) {
     animation: fadeIn 0.3s ease-out;
 }
 
