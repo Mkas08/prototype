@@ -539,7 +539,8 @@
                 </div>
             </div>
 
-            <h3>Badges</h3>
+            <h3>Badges <span style="font-size: 0.8rem; color: var(--primary); cursor: pointer;"
+                    onclick="showScreen('badges-screen')">View All →</span></h3>
             <div class="badges-section">
                 <div class="badges-list">
                     <div class="badge-item">
@@ -560,6 +561,81 @@
             <button class="btn btn-secondary" onclick="showScreen('settings-screen')">
                 <i class="fas fa-cog" style="margin-right: 8px;"></i> Settings
             </button>
+        </div>
+
+        <!-- Screen: Badges & Achievements -->
+        <div id="badges-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('profile-view-screen')" style="cursor: pointer;"></i>
+                <h2>Achievements</h2>
+                <div style="width: 24px;"></div>
+            </div>
+
+            <p style="margin-bottom: 24px; color: var(--text-muted);">Unlock badges by completing reading goals.</p>
+
+            <div class="badges-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                <!-- Unlocked Badge -->
+                <div class="badge-card unlocked"
+                    style="text-align: center; padding: 16px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow);">
+                    <div class="badge-icon"
+                        style="width: 60px; height: 60px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--primary), #2c5c3e); color: white; font-size: 1.5rem;">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h4 style="margin: 0; font-size: 0.9rem;">Ramadan Ready</h4>
+                    <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">Opened app in Ramadan</p>
+                </div>
+                <!-- Locked Badge 1 -->
+                <div class="badge-card locked"
+                    style="text-align: center; padding: 16px; background: var(--surface); border-radius: 12px; opacity: 0.6; box-shadow: var(--shadow);">
+                    <div class="badge-icon"
+                        style="width: 60px; height: 60px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #ccc; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 style="margin: 0; font-size: 0.9rem;">7-Day Streak</h4>
+                    <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">Read for 7 days in a row
+                    </p>
+                </div>
+                <!-- Locked Badge 2 -->
+                <div class="badge-card locked"
+                    style="text-align: center; padding: 16px; background: var(--surface); border-radius: 12px; opacity: 0.6; box-shadow: var(--shadow);">
+                    <div class="badge-icon"
+                        style="width: 60px; height: 60px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #ccc; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4 style="margin: 0; font-size: 0.9rem;">First Juz</h4>
+                    <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">Complete Juz 1</p>
+                </div>
+                <!-- Locked Badge 3 -->
+                <div class="badge-card locked"
+                    style="text-align: center; padding: 16px; background: var(--surface); border-radius: 12px; opacity: 0.6; box-shadow: var(--shadow);">
+                    <div class="badge-icon"
+                        style="width: 60px; height: 60px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #ccc; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4 style="margin: 0; font-size: 0.9rem;">On Fire</h4>
+                    <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">30-day streak</p>
+                </div>
+                <!-- Locked Badge 4 -->
+                <div class="badge-card locked"
+                    style="text-align: center; padding: 16px; background: var(--surface); border-radius: 12px; opacity: 0.6; box-shadow: var(--shadow);">
+                    <div class="badge-icon"
+                        style="width: 60px; height: 60px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #ccc; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 style="margin: 0; font-size: 0.9rem;">Community Star</h4>
+                    <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">Get 10 likes</p>
+                </div>
+                <!-- Locked Badge 5 -->
+                <div class="badge-card locked"
+                    style="text-align: center; padding: 16px; background: var(--surface); border-radius: 12px; opacity: 0.6; box-shadow: var(--shadow);">
+                    <div class="badge-icon"
+                        style="width: 60px; height: 60px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #ccc; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4 style="margin: 0; font-size: 0.9rem;">Khatam</h4>
+                    <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">Complete the Quran</p>
+                </div>
+            </div>
         </div>
 
         <!-- Screen 22: App Blocker Settings -->
@@ -700,7 +776,8 @@
                         <div class="surah-number">67</div>
                         <div>
                             <h4 style="margin: 0;">Al-Mulk</h4>
-                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">The Sovereignty • 30 Verses</p>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">The Sovereignty • 30
+                                Verses</p>
                         </div>
                     </div>
                     <div class="arabic-name">الملك</div>
@@ -748,7 +825,8 @@
                         ٱلْحَمْدُ لِلَّهِ ٱلَّذِىٓ أَنزَلَ عَلَىٰ عَبْدِهِ ٱلْكِتَـٰبَ وَلَمْ يَجْعَل لَّهُۥ عِوَجَا ۜ
                     </p>
                     <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-                        "All praise is due to Allah, Who has sent down upon His Servant the Book and has not made therein any
+                        "All praise is due to Allah, Who has sent down upon His Servant the Book and has not made
+                        therein any
                         deviance."
                     </p>
                 </div>
@@ -763,7 +841,8 @@
                 <div id="tafsir-content">
                     <h4 style="margin-bottom: 12px;">Tafsir Ibn Kathir</h4>
                     <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted);">
-                        Allah praises Himself for sending down the Noble Quran to His noble Messenger. It is a straight Book
+                        Allah praises Himself for sending down the Noble Quran to His noble Messenger. It is a straight
+                        Book
                         that clearly guides to the true path, containing no ambiguity or deviances.
                     </p>
                 </div>
@@ -772,13 +851,210 @@
 
 
 
-        <div id="messages-screen" class="screen">
+        <!-- Screen 18: Chat Inbox (Messages) -->
+        <div id="messages-screen" class="screen" style="padding-bottom: 80px;">
             <div class="home-header">
                 <h2>Messages</h2>
+                <i class="fas fa-edit" style="color: var(--primary); cursor: pointer;"></i>
             </div>
-            <div class="text-center" style="margin-top: 50px;">
-                <i class="fas fa-comments" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 20px;"></i>
-                <p>Direct Messages coming in Milestone 6</p>
+
+            <!-- Chat Threads List -->
+            <div id="chat-inbox" style="margin-top: 10px;">
+                <!-- Thread 1: Unread -->
+                <div class="inbox-item unread" onclick="showScreen('chat-room-screen')" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer;">
+                    <div class="avatar-circle" style="width: 50px; height: 50px; font-size: 1.2rem; flex-shrink: 0;">
+                        <span>Y</span>
+                    </div>
+                    <div style="flex: 1; overflow: hidden;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0; font-weight: 700;">Yusuf Al-Banjari</h4>
+                            <span style="font-size: 0.75rem; color: var(--primary);">2m</span>
+                        </div>
+                        <p style="margin: 4px 0 0; font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            Assalamu alaikum! Did you finish Al-Kahf?
+                        </p>
+                    </div>
+                    <div class="unread-dot" style="width: 10px; height: 10px; background: var(--primary); border-radius: 50%; flex-shrink: 0;"></div>
+                </div>
+                <!-- Thread 2 -->
+                <div class="inbox-item" onclick="showScreen('chat-room-screen')" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer;">
+                    <div class="avatar-circle" style="width: 50px; height: 50px; font-size: 1.2rem; flex-shrink: 0; background: #e0e0e0;">
+                        <span>S</span>
+                    </div>
+                    <div style="flex: 1; overflow: hidden;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">Sarah M.</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">1h</span>
+                        </div>
+                        <p style="margin: 4px 0 0; font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            JazakAllah khair for the reminder!
+                        </p>
+                    </div>
+                </div>
+                <!-- Thread 3: Group -->
+                <div class="inbox-item" onclick="showScreen('chat-room-screen')" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer;">
+                    <div class="avatar-circle" style="width: 50px; height: 50px; font-size: 1.2rem; flex-shrink: 0; background: var(--secondary);">
+                        <i class="fas fa-users" style="font-size: 1rem;"></i>
+                    </div>
+                    <div style="flex: 1; overflow: hidden;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">Ramadan Prep Group</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Yesterday</span>
+                        </div>
+                        <p style="margin: 4px 0 0; font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            Omar: Who's joining the Tarawih challenge?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 19: Active Chat Room -->
+        <div id="chat-room-screen" class="screen" style="padding: 0; display: flex; flex-direction: column;">
+            <!-- Chat Header -->
+            <div class="chat-header" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--surface); border-bottom: 1px solid var(--border); flex-shrink: 0;">
+                <i class="fas fa-arrow-left" onclick="showScreen('messages-screen')" style="cursor: pointer;"></i>
+                <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1rem;">
+                    <span>Y</span>
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="margin: 0;">Yusuf Al-Banjari</h4>
+                    <span style="font-size: 0.75rem; color: var(--primary);">Online</span>
+                </div>
+                <i class="fas fa-info-circle" onclick="showScreen('chat-info-screen')" style="color: var(--primary); cursor: pointer;"></i>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="messages-area" style="flex: 1; overflow-y: auto; padding: 20px;">
+                <!-- Message from them -->
+                <div class="msg-them" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                    <div class="avatar-circle" style="width: 32px; height: 32px; font-size: 0.8rem; flex-shrink: 0;">
+                        <span>Y</span>
+                    </div>
+                    <div style="background: var(--surface); padding: 10px 14px; border-radius: 0 16px 16px 16px; max-width: 75%; box-shadow: var(--shadow);">
+                        <p style="margin: 0; font-size: 0.95rem;">Assalamu alaikum! Did you finish Al-Kahf today?</p>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); display: block; text-align: right; margin-top: 4px;">10:32 AM</span>
+                    </div>
+                </div>
+                <!-- Message from me -->
+                <div class="msg-me" style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
+                    <div style="background: var(--primary); color: white; padding: 10px 14px; border-radius: 16px 0 16px 16px; max-width: 75%;">
+                        <p style="margin: 0; font-size: 0.95rem;">Wa alaikum assalam! Yes, Alhamdulilah. The app reminder helped!</p>
+                        <span style="font-size: 0.7rem; opacity: 0.8; display: block; text-align: right; margin-top: 4px;">10:35 AM ✓✓</span>
+                    </div>
+                </div>
+                <!-- System message -->
+                <div class="msg-system" style="text-align: center; margin: 20px 0;">
+                    <span style="font-size: 0.75rem; background: rgba(0,0,0,0.05); padding: 4px 12px; border-radius: 12px; color: var(--text-muted);">
+                        Today
+                    </span>
+                </div>
+                <!-- Another message from them -->
+                <div class="msg-them" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                    <div class="avatar-circle" style="width: 32px; height: 32px; font-size: 0.8rem; flex-shrink: 0;">
+                        <span>Y</span>
+                    </div>
+                    <div style="background: var(--surface); padding: 10px 14px; border-radius: 0 16px 16px 16px; max-width: 75%; box-shadow: var(--shadow);">
+                        <p style="margin: 0; font-size: 0.95rem;">MashaAllah! That's the consistency we need 💪</p>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); display: block; text-align: right; margin-top: 4px;">Just now</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="chat-input-bar" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0;">
+                <i class="fas fa-plus-circle" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                <input type="text" placeholder="Type a message..." style="flex: 1; border: 1px solid var(--border); border-radius: 20px; padding: 10px 16px; background: var(--background); outline: none;">
+                <i class="fas fa-paper-plane" style="font-size: 1.3rem; color: var(--primary); cursor: pointer;"></i>
+            </div>
+        </div>
+
+        <!-- Screen 20: Chat Info -->
+        <div id="chat-info-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('chat-room-screen')" style="cursor: pointer;"></i>
+                <h2>Chat Info</h2>
+                <div style="width: 24px;"></div>
+            </div>
+
+            <div class="text-center" style="margin-bottom: 24px;">
+                <div class="avatar-circle" style="width: 80px; height: 80px; font-size: 2rem; margin: 0 auto 12px;">
+                    <span>Y</span>
+                </div>
+                <h3 style="margin: 0;">Yusuf Al-Banjari</h3>
+                <p style="margin: 4px 0 0; color: var(--text-muted);">@yusuf_banjari</p>
+            </div>
+
+            <div class="settings-group">
+                <div class="settings-item">
+                    <span>Mute Notifications</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-item">
+                    <span>Media & Files</span>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="settings-item">
+                    <span>Search in Chat</span>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+            </div>
+
+            <button class="btn btn-text" style="color: #e74c3c; margin-top: 24px;">Block User</button>
+        </div>
+
+        <!-- Screen 23: Notifications Center -->
+        <div id="notifications-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('home-screen')" style="cursor: pointer;"></i>
+                <h2>Notifications</h2>
+                <span style="font-size: 0.85rem; color: var(--primary); cursor: pointer;">Mark all read</span>
+            </div>
+
+            <div id="notification-list" style="margin-top: 10px;">
+                <!-- Notification Item 1: Unread -->
+                <div class="notif-item unread" style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(74, 124, 89, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-heart" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; font-size: 0.95rem;"><strong>Sarah M.</strong> liked your post.</p>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">5 minutes ago</span>
+                    </div>
+                </div>
+                <!-- Notification Item 2 -->
+                <div class="notif-item" style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(212, 175, 55, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-trophy" style="color: var(--secondary);"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; font-size: 0.95rem;"><strong>You</strong> moved up to Rank #4!</p>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">1 hour ago</span>
+                    </div>
+                </div>
+                <!-- Notification Item 3 -->
+                <div class="notif-item" style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(231, 76, 60, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-fire" style="color: #E74C3C;"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; font-size: 0.95rem;"><strong>Streak Alert!</strong> Don't break your 5-day streak. Read now.</p>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">3 hours ago</span>
+                    </div>
+                </div>
+                 <!-- Notification Item 4 -->
+                <div class="notif-item" style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 0, 0, 0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-user-plus" style="color: var(--text-muted);"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; font-size: 0.95rem;"><strong>Omar</strong> started following you.</p>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Yesterday</span>
+                    </div>
+                </div>
             </div>
         </div>
 

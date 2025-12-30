@@ -451,7 +451,8 @@ function openFullReader(surahKey) {
     // Hack: Wrap each verse marker in a span to make it clickable for the prototype
     // Replacing end-of-verse markers (digits in brackets) with interactive spans
     // This is a simple regex replacement for the mock data
-    const interactiveText = text.replace(/(\(\d+\))/g, '<span class="verse-marker" onclick="openVerseDetail()">$1</span>');
+    // Updated to match Arabic Numerals inside brackets e.g., (١)
+    const interactiveText = text.replace(/(\([^\)]+\))/g, '<span class="verse-marker" onclick="openVerseDetail()">$1</span>');
 
     document.getElementById('full-quran-text').innerHTML = interactiveText;
 
