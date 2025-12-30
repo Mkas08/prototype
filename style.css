@@ -803,3 +803,15 @@ input[type=range]::-webkit-slider-runnable-track {
     font-weight: 700;
     color: var(--primary);
 }
+
+.verse-marker {
+    color: var(--primary);
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.verse-marker:hover {
+    background-color: rgba(74, 124, 89, 0.1);
+    border-radius: 4px;
+}

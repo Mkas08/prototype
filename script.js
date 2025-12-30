@@ -429,7 +429,37 @@ function handleNewPost() {
 
     // Return to feed
     showScreen('community-screen');
+    // Return to feed
+    showScreen('community-screen');
     renderCommunityFeed();
+}
+
+// =========================================
+// MILESTONE 5: QURURAN READER LOGIC
+// =========================================
+
+function openFullReader(surahKey) {
+    const titleMap = { 'kahf': 'Al-Kahf', 'yasin': 'Yasin', 'mulk': 'Al-Mulk' };
+    const title = titleMap[surahKey] || 'Quran Reader';
+
+    // Set Title
+    document.getElementById('full-reader-title').innerText = title;
+
+    // Get Text
+    let text = SURAH_DATA[surahKey] || "Text not available.";
+
+    // Hack: Wrap each verse marker in a span to make it clickable for the prototype
+    // Replacing end-of-verse markers (digits in brackets) with interactive spans
+    // This is a simple regex replacement for the mock data
+    const interactiveText = text.replace(/(\(\d+\))/g, '<span class="verse-marker" onclick="openVerseDetail()">$1</span>');
+
+    document.getElementById('full-quran-text').innerHTML = interactiveText;
+
+    showScreen('full-reader-screen');
+}
+
+function openVerseDetail() {
+    showScreen('verse-detail-screen');
 }
 
 // Hook into showScreen to render feed when opened
