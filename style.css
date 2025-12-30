@@ -4,9 +4,12 @@
     --primary: #4A7C59;
     --primary-light: #5F8E6D;
     --secondary: #B88E4F;
-    --background: #C4CCC7; /* Significantly darkened to reduced reflection */
-    --surface: #D1D9D4;    /* Muted mid-tone surface */
-    --text-main: #1A1F1D;   /* Darker for high contrast on grey */
+    --background: #C4CCC7;
+    /* Significantly darkened to reduced reflection */
+    --surface: #D1D9D4;
+    /* Muted mid-tone surface */
+    --text-main: #1A1F1D;
+    /* Darker for high contrast on grey */
     --text-muted: #515B54;
     --border: #AEB8B1;
     --shadow: rgba(0, 0, 0, 0.12);
@@ -396,14 +399,20 @@ MILESTONE 2: DASHBOARD & SETTINGS
 }
 
 .streak-card {
-    background: linear-gradient(135deg, #4A7C59, #5F9EA0); /* Teal Green Gradient */
-    color: white;
+    background: linear-gradient(135deg, #4A7C59, #5F9EA0);
+    /* Teal Green Gradient */
+    color: white !important;
     padding: 16px;
     border-radius: 16px;
     display: flex;
     align-items: center;
     margin-bottom: 24px;
     box-shadow: 0 4px 10px rgba(74, 124, 89, 0.3);
+}
+
+.streak-card h3,
+.streak-card p {
+    color: white !important;
 }
 
 .streak-icon {
