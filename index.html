@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Qur'an Focus MVP Prototype</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;600&family=League+Spartan:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app-container">
+        <!-- Theme Toggle removed (moved to Settings) -->
+
+        <!-- Screen 1: Splash -->
+        <div id="splash-screen" class="screen active">
+            <div class="logo-container">
+                <img src="https://placehold.co/100x100/4A7C59/ffffff?text=QF" alt="App Logo" id="splash-logo">
+                <h1>Qur'an<br>Focus</h1>
+            </div>
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Screen 2: Intro / Value Prop -->
+        <div id="intro-screen" class="screen">
+            <div class="intro-graphic">
+                <img src="https://placehold.co/300x300/e0e0e0/555?text=Illustration" alt="Intro Illustration">
+            </div>
+            <div class="intro-content">
+                <h2>Connect with the Qur'an.<br>Disconnect from distractions.</h2>
+                <p>Build a habit of worship in a focused, distraction-free environment.</p>
+            </div>
+            <div class="intro-actions">
+                <button class="btn btn-primary" onclick="showScreen('auth-screen')">Get Started</button>
+            </div>
+        </div>
+
+        <!-- Screen 3: Auth (Login/Register) -->
+        <div id="auth-screen" class="screen">
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to continue your journey.</p>
+            </div>
+
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchAuthTab('login')">Log In</div>
+                <div class="auth-tab" onclick="switchAuthTab('register')">Sign Up</div>
+            </div>
+
+            <div id="auth-form-login">
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password">
+                </div>
+                <div class="text-right" style="text-align: right; margin-bottom: 20px;">
+                    <a href="#" class="text-primary" style="font-size: 0.9rem; text-decoration: none;">Forgot
+                        Password?</a>
+                </div>
+                <button class="btn btn-primary" onclick="showScreen('profile-screen')">Log In</button>
+            </div>
+
+            <div id="auth-form-register" style="display: none;">
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name">
+                </div>
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password">
+                </div>
+                <button class="btn btn-primary" onclick="showScreen('profile-screen')">Create Account</button>
+            </div>
+        </div>
+
+        <!-- Screen 4: Profile Setup -->
+        <div id="profile-screen" class="screen">
+            <div class="text-center">
+                <h2>Who are you?</h2>
+                <p>Let's complete your profile.</p>
+            </div>
+
+            <div class="avatar-upload" onclick="alert('Upload Avatar Clicked')">
+                <div class="avatar-circle">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="text" placeholder="Display Name" value="Abdullah">
+            </div>
+
+            <div class="input-group">
+                <input type="text" placeholder="Username (Unique)" value="@abdullah">
+            </div>
+
+            <div class="gender-select">
+                <div class="gender-option selected" onclick="selectGender(this, 'brother')">
+                    <i class="fas fa-user"></i><br>Brother
+                </div>
+                <div class="gender-option" onclick="selectGender(this, 'sister')">
+                    <i class="fas fa-user-tie"></i><br>Sister
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <button class="btn btn-primary" onclick="showScreen('home-screen')">Complete Setup</button>
+        </div>
+
+        <!-- ==============================
+             MILESTONE 2: DASHBOARD & SETTINGS
+             ============================== -->
+
+        <!-- Screen 5: Home Dashboard -->
+        <div id="home-screen" class="screen">
+            <div class="home-header">
+                <div>
+                    <p style="margin-bottom: 0; font-size: 0.9rem;">As-salamu alaykum,</p>
+                    <h2>Abdullah</h2>
+                </div>
+                <div class="notif-bell" onclick="showScreen('notifications-screen')">
+                    <i class="fas fa-bell"></i>
+                    <div class="notif-badge"></div>
+                </div>
+            </div>
+
+            <div class="streak-card">
+                <div class="streak-icon"><i class="fas fa-fire"></i></div>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">5 Day Streak!</h3>
+                    <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">Keep it burning!</p>
+                </div>
+            </div>
+
+            <div class="progress-ring-container">
+                <div class="progress-ring">
+                    <div class="ring-circle" style="border-color: #eee;"></div>
+                    <div class="ring-circle ring-filled"></div>
+                    <div class="ring-content">
+                        <h2 style="margin: 0; color: var(--primary);">10</h2>
+                        <p style="margin: 0; font-size: 0.9rem;">of 20 mins</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="showScreen('focus-setup-screen')" style="margin-bottom: 24px;">
+                <i class="fas fa-play" style="margin-right: 8px;"></i> Start Focus Session
+            </button>
+
+
+
+            <div class="section-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3>Recent Activity</h3>
+                <span class="text-primary" style="font-size: 0.8rem;">View All</span>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div class="horizontal-scroll-section">
+                <!-- Card 1 -->
+                <div class="scroll-card">
+                    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+                        <div class="badge-icon" style="width: 40px; height: 40px; font-size: 1rem;"><i
+                                class="fas fa-book-open"></i></div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Surah Al-Kahf</h4>
+                            <p style="margin: 0; font-size: 0.75rem;">Yesterday</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: rgba(0,0,0,0.05); border-radius: 8px; height: 6px; width: 100%; margin-top: 8px;">
+                        <div style="background: var(--primary); width: 100%; height: 100%; border-radius: 8px;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Completed</span>
+                        <span style="font-size: 0.75rem; font-weight: 600;">15 mins</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="scroll-card">
+                    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+                        <div class="badge-icon"
+                            style="width: 40px; height: 40px; font-size: 1rem; background-color: var(--secondary);"><i
+                                class="fas fa-moon"></i></div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Night Focus</h4>
+                            <p style="margin: 0; font-size: 0.75rem;">2 days ago</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: rgba(0,0,0,0.05); border-radius: 8px; height: 6px; width: 100%; margin-top: 8px;">
+                        <div style="background: var(--secondary); width: 100%; height: 100%; border-radius: 8px;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Session</span>
+                        <span style="font-size: 0.75rem; font-weight: 600;">20 mins</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="scroll-card">
+                    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+                        <div class="badge-icon"
+                            style="width: 40px; height: 40px; font-size: 1rem; background-color: #E74C3C;"><i
+                                class="fas fa-fire"></i></div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Streak Saved</h4>
+                            <p style="margin: 0; font-size: 0.75rem;">3 days ago</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.8rem; line-height: 1.4; margin: 0;">You hit your daily goal right before
+                        midnight!</p>
+                </div>
+            </div>
+
+            <!-- Community Leaderboard Snippet -->
+            <div class="section-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3>Community Rank</h3>
+                <span class="text-primary" style="font-size: 0.8rem;">Leaderboard</span>
+            </div>
+            <div class="action-card" style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="font-weight: 700; color: var(--text-muted); font-size: 1.2rem;">#4</div>
+                    <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1rem; border-width: 1px;">
+                        <span>A</span>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0;">You</h4>
+                        <p style="margin: 0; font-size: 0.8rem;">1250 XP</p>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 0.8rem; color: var(--primary);"><i class="fas fa-arrow-up"></i> 2
+                        spots</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 6: Focus Setup (Surah Selection) -->
+        <div id="focus-setup-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('home-screen')"></i>
+                <h2>Select Surah</h2>
+                <div style="width: 24px;"></div>
+            </div>
+
+            <!-- Timer Goal Setup -->
+            <div class="text-center" style="margin-bottom: 24px;">
+                <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Set Focus Goal</p>
+                <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
+                    <h1 id="duration-display" style="font-size: 3rem; color: var(--primary); margin: 0;">20</h1>
+                    <span style="font-weight: 600;">min</span>
+                </div>
+
+                <input type="range" id="duration-slider" min="5" max="120" value="20" step="5"
+                    style="width: 100%; margin: 16px 0;" oninput="updateDurationDisplay(this.value)">
+
+                <div style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.8rem; width: auto;"
+                        onclick="setDuration(20)">20m</button>
+                    <button class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.8rem; width: auto;"
+                        onclick="setDuration(45)">45m</button>
+                    <button class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.8rem; width: auto;"
+                        onclick="setDuration(60)">60m</button>
+                </div>
+            </div>
+
+            <div class="toggle-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button class="btn btn-primary" style="flex: 1; padding: 8px;">Surahs</button>
+                <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Juz</button>
+                <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Playlists</button>
+            </div>
+
+            <div class="surah-list" style="overflow-y: auto; padding-bottom: 80px;">
+                <!-- Surah Item 1 -->
+                <div class="surah-item" onclick="startFocusSession('kahf')">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="surah-number">18</div>
+                        <div>
+                            <h4 style="margin: 0;">Al-Kahf</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">The Cave • 110 Verses</p>
+                        </div>
+                    </div>
+                    <div class="arabic-name">الكهف</div>
+                </div>
+
+                <!-- Surah Item 2 -->
+                <div class="surah-item" onclick="startFocusSession('yasin')">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="surah-number">36</div>
+                        <div>
+                            <h4 style="margin: 0;">Yasin</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Ya Sin • 83 Verses</p>
+                        </div>
+                    </div>
+                    <div class="arabic-name">يس</div>
+                </div>
+
+                <!-- Surah Item 3 -->
+                <div class="surah-item" onclick="startFocusSession('mulk')">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="surah-number">67</div>
+                        <div>
+                            <h4 style="margin: 0;">Al-Mulk</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">The Sovereignty • 30
+                                Verses</p>
+                        </div>
+                    </div>
+                    <div class="arabic-name">الملك</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 7: Active Focus Session (Reading View) -->
+        <div id="active-focus-screen" class="screen" style="padding: 0;">
+            <!-- Sticky Header -->
+            <div class="reader-header" style="
+                    display: flex; 
+                    justify-content: space-between; 
+                    align-items: center; 
+                    padding: 16px 20px; 
+                    background: var(--surface); 
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                ">
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <i class="fas fa-times" onclick="endFocusSession(false)"
+                        style="font-size: 1.2rem; cursor: pointer;"></i>
+                    <h3 id="reader-title" style="margin: 0;">Al-Kahf</h3>
+                </div>
+                <div class="mini-timer" style="
+                        background: rgba(74, 124, 89, 0.1); 
+                        color: var(--primary); 
+                        padding: 4px 12px; 
+                        border-radius: 20px; 
+                        font-weight: 600; 
+                        font-size: 0.9rem;
+                    ">
+                    <i class="fas fa-clock" style="margin-right: 6px;"></i><span id="reader-timer">00:00</span>
+                </div>
+            </div>
+
+            <!-- Quran Text Container -->
+            <div class="quran-content-scroll" style="padding: 24px; overflow-y: auto; height: calc(100% - 70px);">
+                <div class="bismillah" style="text-align: center; margin-bottom: 32px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Basmala.svg" alt="Bismillah"
+                        style="width: 150px; opacity: 0.8;">
+                </div>
+
+                <div id="quran-text-area" class="quran-text" dir="rtl" style="
+                        font-family: 'Amiri', serif; 
+                        font-size: 28px; 
+                        line-height: 2.2; 
+                        text-align: justify;
+                        color: var(--text-main);
+                     ">
+                    <!-- Text injected via JS -->
+                </div>
+
+                <div class="text-center" style="margin-top: 60px; padding-bottom: 100px;">
+                    <button class="btn btn-primary" onclick="endFocusSession(true)">Finish Reading</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 8: Focus Summary -->
+        <div id="focus-summary-screen" class="screen">
+            <div class="text-center" style="margin-top: 40px; margin-bottom: 40px;">
+                <div class="avatar-circle"
+                    style="width: 80px; height: 80px; margin: 0 auto 24px; background-color: var(--primary); border: none; color: white;">
+                    <i class="fas fa-check" style="font-size: 2rem;"></i>
+                </div>
+                <h2>MashaAllah!</h2>
+                <p>Session Complete</p>
+            </div>
+
+            <div class="profile-stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value" id="summary-time">20</div>
+                    <div class="stat-label">Minutes</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="summary-points">+50</div>
+                    <div class="stat-label">Hasanat</div>
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+            <button class="btn btn-primary" onclick="showScreen('home-screen')">Back to Home</button>
+        </div>
+
+        <!-- Screen 9: Community Feed -->
+        <div id="community-screen" class="screen" style="padding-bottom: 80px;">
+            <div class="home-header">
+                <div style="width: 24px;"></div> <!-- Spacer for center alignment -->
+                <h2>Community</h2>
+                <i class="fas fa-trophy" style="color: var(--primary); cursor: pointer;"
+                    onclick="showScreen('leaderboard-screen')"></i>
+            </div>
+
+            <!-- Feed Container -->
+            <div id="community-feed" style="margin-top: 10px;">
+                <!-- Posts will be injected here via JS -->
+            </div>
+
+            <!-- Floating Action Button -->
+            <button class="fab" onclick="showScreen('create-post-screen')">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <!-- Screen 10: Create Post -->
+        <div id="create-post-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-times" onclick="showScreen('community-screen')" style="cursor: pointer;"></i>
+                <h2>New Post</h2>
+                <span style="color: var(--primary); font-weight: 600; cursor: pointer;"
+                    onclick="handleNewPost()">Post</span>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1rem;">
+                    <span>A</span>
+                </div>
+                <div style="flex: 1;">
+                    <textarea id="post-content" placeholder="Share your reflection or progress..."
+                        style="width: 100%; height: 150px; border: none; background: transparent; font-family: var(--font-body); font-size: 1rem; resize: none; outline: none;"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 11: Leaderboard -->
+        <div id="leaderboard-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('community-screen')" style="cursor: pointer;"></i>
+                <h2>Leaderboard</h2>
+                <div style="width: 24px;"></div>
+            </div>
+
+            <div class="toggle-container" style="display: flex; gap: 10px; margin-bottom: 24px;">
+                <button class="btn btn-primary" style="flex: 1; padding: 8px;">Global</button>
+                <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Friends</button>
+            </div>
+
+            <!-- Podium (Top 3) -->
+            <div class="podium-container"
+                style="display: flex; justify-content: center; align-items: flex-end; gap: 16px; margin-bottom: 32px; padding-top: 20px;">
+                <!-- Rank 2 -->
+                <div class="podium-item" style="text-align: center;">
+                    <div class="avatar-circle"
+                        style="width: 50px; height: 50px; font-size: 1.2rem; border: 3px solid #C0C0C0; margin: 0 auto 8px;">
+                        <span>O</span>
+                    </div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Omar</div>
+                    <div style="font-size: 0.8rem; color: var(--primary);">1450</div>
+                    <div
+                        style="background: #C0C0C0; color: white; margin-top: 8px; border-radius: 8px 8px 0 0; height: 60px; width: 60px; display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                        2
+                    </div>
+                </div>
+                <!-- Rank 1 -->
+                <div class="podium-item" style="text-align: center;">
+                    <div class="avatar-circle"
+                        style="width: 70px; height: 70px; font-size: 1.5rem; border: 3px solid #FFD700; margin: 0 auto 8px;">
+                        <i class="fas fa-crown"
+                            style="color: #FFD700; font-size: 1rem; position: absolute; top: -15px;"></i>
+                        <span>A</span>
+                    </div>
+                    <div style="font-weight: 700; font-size: 1rem;">Ali</div>
+                    <div style="font-size: 0.8rem; color: var(--primary);">2100</div>
+                    <div
+                        style="background: #FFD700; color: white; margin-top: 8px; border-radius: 8px 8px 0 0; height: 90px; width: 70px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.5rem;">
+                        1
+                    </div>
+                </div>
+                <!-- Rank 3 -->
+                <div class="podium-item" style="text-align: center;">
+                    <div class="avatar-circle"
+                        style="width: 50px; height: 50px; font-size: 1.2rem; border: 3px solid #CD7F32; margin: 0 auto 8px;">
+                        <span>K</span>
+                    </div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Khalid</div>
+                    <div style="font-size: 0.8rem; color: var(--primary);">1200</div>
+                    <div
+                        style="background: #CD7F32; color: white; margin-top: 8px; border-radius: 8px 8px 0 0; height: 40px; width: 60px; display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                        3
+                    </div>
+                </div>
+            </div>
+
+            <!-- List (Rank 4+) -->
+            <div id="leaderboard-list" style="overflow-y: auto; padding-bottom: 20px;">
+                <!-- Items injected via JS -->
+            </div>
+        </div>
+
+        <!-- Screen 21: User Profile -->
+        <div id="profile-view-screen" class="screen">
+            <div class="profile-header">
+                <div class="avatar-circle" style="margin: 0 auto 16px;">
+                    <span style="font-size: 2.5rem;">A</span>
+                </div>
+                <h2>Abdullah</h2>
+                <p>@abdullah</p>
+            </div>
+
+            <div class="profile-stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value">120</div>
+                    <div class="stat-label">Total Mins</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Streak</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Pages</div>
+                </div>
+            </div>
+
+            <h3>Badges</h3>
+            <div class="badges-section">
+                <div class="badges-list">
+                    <div class="badge-item">
+                        <div class="badge-icon"><i class="fas fa-moon"></i></div>
+                        <span style="font-size: 0.8rem;">Ramadan Ready</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" style="background-color: #ccc;"><i class="fas fa-check"></i></div>
+                        <span style="font-size: 0.8rem;">7 Days</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" style="background-color: #ccc;"><i class="fas fa-book"></i></div>
+                        <span style="font-size: 0.8rem;">First Juz</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="showScreen('settings-screen')">
+                <i class="fas fa-cog" style="margin-right: 8px;"></i> Settings
+            </button>
+        </div>
+
+        <!-- Screen 22: App Blocker Settings -->
+        <div id="blocker-settings-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-arrow-left" onclick="showScreen('settings-screen')"></i>
+                <h2>Distraction Shield</h2>
+                <div style="width: 24px;"></div>
+            </div>
+
+            <p>Select apps to block during Focus Mode.</p>
+
+            <div class="input-group">
+                <div class="app-list-item">
+                    <div class="app-info">
+                        <div class="app-icon" style="background-color: #E1306C;"></div>
+                        <span>Instagram</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="block-instagram" onchange="saveBlockerState('instagram')">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="app-list-item">
+                    <div class="app-info">
+                        <div class="app-icon" style="background-color: #000;"></div>
+                        <span>TikTok</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="block-tiktok" onchange="saveBlockerState('tiktok')">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="app-list-item">
+                    <div class="app-info">
+                        <div class="app-icon" style="background-color: #FF0000;"></div>
+                        <span>YouTube</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="block-youtube" onchange="saveBlockerState('youtube')">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 24: Settings (General) -->
+        <div id="settings-screen" class="screen">
+            <div class="settings-header" style="display: flex; align-items: center; margin-bottom: 24px;">
+                <i class="fas fa-arrow-left" onclick="showScreen('profile-view-screen')"
+                    style="font-size: 1.2rem; margin-right: 16px; cursor: pointer;"></i>
+                <h2 style="margin: 0;">Settings</h2>
+            </div>
+
+            <div class="settings-group">
+                <div class="settings-item" onclick="showScreen('profile-view-screen')">
+                    <span>Edit Profile</span>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="settings-item">
+                    <span>Change Password</span>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+            </div>
+
+            <h3>Preferences</h3>
+            <div class="settings-group">
+                <div class="settings-item" onclick="toggleTheme()">
+                    <span>Dark Mode</span>
+                    <label class="switch" style="pointer-events: none;"> <!-- Controlled by JS -->
+                        <input type="checkbox" id="settings-dark-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-item" onclick="showScreen('blocker-settings-screen')">
+                    <span>App Blocker Config</span>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="settings-item">
+                    <span>Notifications</span>
+                    <label class="switch">
+                        <input type="checkbox" id="settings-notifications-toggle" onchange="saveNotificationState()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-text" style="color: #e74c3c;" onclick="showScreen('splash-screen')">Log Out</button>
+        </div>
+
+        <!-- Screen 12: Quran Index -->
+        <div id="quran-screen" class="screen" style="padding-bottom: 80px;">
+            <div class="home-header">
+                <h2>Al-Qur'an</h2>
+                <i class="fas fa-search" style="color: var(--primary);"></i>
+            </div>
+
+            <!-- Search Bar -->
+            <div style="margin-bottom: 20px;">
+                <input type="text" placeholder="Search Surah or Juz..."
+                    style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text-color); outline: none;">
+            </div>
+
+            <!-- Quran Tabs -->
+            <div class="toggle-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button class="btn btn-primary" style="flex: 1; padding: 8px;">Surah</button>
+                <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Juz</button>
+                <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Bookmarks</button>
+            </div>
+
+            <!-- Surah List -->
+            <div class="surah-list" style="overflow-y: auto;">
+                <!-- Surah 1 -->
+                <div class="surah-item" onclick="openFullReader('kahf')">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="surah-number">18</div>
+                        <div>
+                            <h4 style="margin: 0;">Al-Kahf</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">The Cave • 110 Verses</p>
+                        </div>
+                    </div>
+                    <div class="arabic-name">الكهف</div>
+                </div>
+                <!-- Surah 2 -->
+                <div class="surah-item" onclick="openFullReader('yasin')">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="surah-number">36</div>
+                        <div>
+                            <h4 style="margin: 0;">Yasin</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Ya-Sin • 83 Verses</p>
+                        </div>
+                    </div>
+                    <div class="arabic-name">يس</div>
+                </div>
+                <!-- Surah 3 -->
+                <div class="surah-item" onclick="openFullReader('mulk')">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="surah-number">67</div>
+                        <div>
+                            <h4 style="margin: 0;">Al-Mulk</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">The Sovereignty • 30 Verses</p>
+                        </div>
+                    </div>
+                    <div class="arabic-name">الملك</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 13: Full Quran Reader (No Timer) -->
+        <div id="full-reader-screen" class="screen">
+            <div class="reader-header"
+                style="position: sticky; top: 0; background: var(--background); padding: 16px 0; z-index: 10; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;">
+                <i class="fas fa-arrow-left" onclick="showScreen('quran-screen')" style="cursor: pointer;"></i>
+                <div style="text-align: center;">
+                    <h3 id="full-reader-title" style="margin: 0;">Al-Kahf</h3>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Page 293</span>
+                </div>
+                <i class="fas fa-ellipsis-v" style="cursor: pointer;"></i>
+            </div>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Basmala.svg" alt="Bismillah"
+                    style="width: 150px; opacity: 0.8; filter: var(--filter-color);">
+            </div>
+
+            <!-- Interactive Text Area -->
+            <div id="full-quran-text" class="quran-text" dir="rtl"
+                style="font-family: 'Amiri', serif; font-size: 1.8rem; line-height: 2.2; text-align: justify; padding-bottom: 100px;">
+                <!-- Text injected via JS -->
+            </div>
+        </div>
+
+        <!-- Screen 14: Verse Detail / Tafsir -->
+        <div id="verse-detail-screen" class="screen">
+            <div class="home-header">
+                <i class="fas fa-times" onclick="showScreen('full-reader-screen')" style="cursor: pointer;"></i>
+                <h2>Verse Analysis</h2>
+                <i class="far fa-bookmark" style="color: var(--primary);"></i>
+            </div>
+
+            <div style="overflow-y: auto; padding-bottom: 40px;">
+                <!-- Selected Verse -->
+                <div
+                    style="background: var(--surface); padding: 20px; border-radius: 16px; text-align: center; margin-bottom: 24px; box-shadow: var(--shadow);">
+                    <p style="font-family: 'Amiri'; font-size: 1.5rem; margin-bottom: 16px; line-height: 2;">
+                        ٱلْحَمْدُ لِلَّهِ ٱلَّذِىٓ أَنزَلَ عَلَىٰ عَبْدِهِ ٱلْكِتَـٰبَ وَلَمْ يَجْعَل لَّهُۥ عِوَجَا ۜ
+                    </p>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+                        "All praise is due to Allah, Who has sent down upon His Servant the Book and has not made therein any
+                        deviance."
+                    </p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="toggle-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button class="btn btn-primary" style="flex: 1; padding: 8px;">Tafsir</button>
+                    <button class="btn btn-secondary" style="flex: 1; padding: 8px;">Reflection</button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="tafsir-content">
+                    <h4 style="margin-bottom: 12px;">Tafsir Ibn Kathir</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted);">
+                        Allah praises Himself for sending down the Noble Quran to His noble Messenger. It is a straight Book
+                        that clearly guides to the true path, containing no ambiguity or deviances.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="messages-screen" class="screen">
+            <div class="home-header">
+                <h2>Messages</h2>
+            </div>
+            <div class="text-center" style="margin-top: 50px;">
+                <i class="fas fa-comments" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 20px;"></i>
+                <p>Direct Messages coming in Milestone 6</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation (Visible on Main Tab Screens) -->
+        <nav id="bottom-nav" style="display: none;">
+            <div class="nav-item active" onclick="showScreen('home-screen')"><i class="fas fa-home"></i></div>
+            <div class="nav-item" onclick="showScreen('quran-screen')"><i class="fas fa-book-open"></i></div>
+            <div class="nav-item" onclick="showScreen('community-screen')"><i class="fas fa-users"></i></div>
+            <div class="nav-item" onclick="showScreen('messages-screen')"><i class="fas fa-comments"></i></div>
+            <div class="nav-item" onclick="showScreen('profile-view-screen')"><i class="fas fa-user"></i></div>
+        </nav>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
